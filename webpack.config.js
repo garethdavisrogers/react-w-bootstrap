@@ -10,21 +10,38 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
+        test: /\.(jsx|js)?$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
         options: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
-        },
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [{ loader: "file-loader" }],
-      },
-      { test: /\.(mp3|wav|mpe?g|ogg)?$/i, use: [{ loader: "file-loader" }] },
-    ],
+        }
+      }
+      // ,{
+      //   test: /\.scss$/,
+      //   exclude: /(node_modules)/,
+      //   use: [
+      //     {loader: 'style-loader'},
+      //     {loader: 'css-loader'},
+      //     {loader: 'postcss-loader',
+      //       options: {
+      //         postcssOptions: {
+      //           plugins: function(){
+      //             return [require('autoprefixer')]
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {loader: 'sass-loader'}
+      //   ]
+      // }
+      ,{
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx"]
   },
 };
